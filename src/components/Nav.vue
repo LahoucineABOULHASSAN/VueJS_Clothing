@@ -1,7 +1,9 @@
 <template>
   <nav>
     <div v-bind:class="themeClass" class="topnav" id="myTopnav">
-      <div class="logo"><span>clothing </span>App</div>
+      <div class="logo" @click="scrollTo('#home')">
+        <span>clothing </span>App
+      </div>
       <div class="menu">
         <NavItem
           v-for="link in links"
@@ -9,7 +11,7 @@
           v-bind:link="link"
           v-bind:themeClass="themeClass"
         />
-        <div href="#" class="navBtn" v-on:click="display()">
+        <div class="navBtn" v-on:click="displayMenu">
           <i class="bars icon responsive-btn"></i>
         </div>
       </div>
@@ -17,9 +19,10 @@
   </nav>
 </template>
 <script>
-import NavItem from './nav/NavItem';
+import NavItem from "./nav/NavItem";
+import { displayMenu, scrollTo } from "../utilities/nav";
 export default {
-  name: 'Nav',
+  name: "Nav",
   components: {
     NavItem,
   },
@@ -29,23 +32,14 @@ export default {
   data() {
     return {
       links: [
-        { link: '#home', value: 'home' },
-        { link: '#our-products', value: 'our products' },
-        { link: '#about-us', value: 'about us' },
-        { link: '#useful-links', value: 'useful links' },
-        { link: '#contact-us', value: 'contact us' },
+        { link: "#our-products", value: "products" },
+        { link: "#useful-links", value: "useful links" },
+        { link: "#about-us", value: "about us" },
+        { link: "#contact-us", value: "contact us" },
       ],
+      displayMenu,
+      scrollTo,
     };
-  },
-  methods: {
-    display: function() {
-      // get the DOM items
-      const topNav = document.querySelector('.topnav');
-      const responsiveBtn = document.querySelector('.responsive-btn');
-      topNav.classList.toggle('responsive');
-      responsiveBtn.classList.toggle('times');
-      responsiveBtn.classList.toggle('bars');
-    },
   },
 };
 </script>
@@ -73,7 +67,7 @@ nav {
 }
 .logo {
   float: left;
-  cursor: default;
+  cursor: pointer;
   font-size: 1.2rem;
   font-weight: 600;
   padding: 0.9rem;

@@ -1,6 +1,6 @@
 <template>
   <div id="useful-links" class="footer-infos grid">
-    <div>
+    <div data-aos="zoom-in">
       <h3>Finance Business</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dolorem
@@ -21,7 +21,7 @@
         </li>
       </ul>
     </div>
-    <div>
+    <div data-aos="zoom-in">
       <h3>Useful Links</h3>
       <ul>
         <li>Lorem ipsum dolor</li>
@@ -30,7 +30,7 @@
         <li>Lorem ipsum dolor</li>
       </ul>
     </div>
-    <div>
+    <div data-aos="zoom-in">
       <h3>Additional Pages</h3>
       <ul>
         <li>About Us</li>
@@ -43,7 +43,7 @@
 </template>
 <script>
 export default {
-  name: 'Infos',
+  name: "Infos",
 };
 </script>
 <style scoped>

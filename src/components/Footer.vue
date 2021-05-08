@@ -1,20 +1,20 @@
 <template>
   <footer v-bind:class="themeClass">
-    <div class="details grid" data-aos="zoom-in">
+    <div class="details grid">
       <Infos />
       <ContactUs />
     </div>
-    <p class="copyrights">
-      Copyright &copy; 2020 |{{ ' ' }}
+    <p id="copyrights" class="copyrights">
+      Copyright &copy; 2020 |{{ " " }}
       <span> <span>Clothing </span>App </span>
     </p>
   </footer>
 </template>
 <script>
-import Infos from './footer/Infos';
-import ContactUs from './footer/ContactUs';
+import Infos from "./footer/Infos";
+import ContactUs from "./footer/ContactUs";
 export default {
-  name: 'Footer',
+  name: "Footer",
   components: {
     Infos,
     ContactUs,

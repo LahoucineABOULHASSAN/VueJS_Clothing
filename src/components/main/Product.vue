@@ -2,13 +2,15 @@
   <div>
     <img v-bind:src="product.image" v-bind:alt="product" />
     <div v-bind:class="theme()">
-      <p>
+      <p class="flex flex-row">
         <span class="product-name">{{ product.product }}</span>
         <span class="product-price">${{ product.price }}</span>
       </p>
       <p class="product-desc text-secondary">{{ product.description }}</p>
-      <p>
-        <span class="product-reviews">Reviews({{ product.reviews }})</span>
+      <p class="flex flex-row">
+        <span class="product-reviews"
+          >{{ product.reviews }} <i class="icon like"></i>
+        </span>
         <span class="product-rating">
           <Rating v-bind:key="product.id" v-bind:rating="product.rating" />
         </span>
@@ -17,9 +19,9 @@
   </div>
 </template>
 <script>
-import Rating from './Rating';
+import Rating from "./Rating";
 export default {
-  name: 'Product',
+  name: "Product",
   components: {
     Rating,
   },
@@ -29,7 +31,7 @@ export default {
   },
   methods: {
     theme: function() {
-      return this.isLight ? 'light details' : 'darker details';
+      return this.isLight ? "light details" : "darker details";
     },
   },
 };
@@ -44,16 +46,12 @@ img {
   font-weight: 500;
   padding: 1rem;
 }
-p,
-span {
+p {
   padding-bottom: 1rem;
 }
 .product-name {
   color: var(--blue);
-  float: left;
-}
-.product-price {
-  float: right;
+  text-transform: capitalize;
 }
 .product-desc {
   clear: both;
@@ -61,11 +59,9 @@ span {
   text-align: justify;
 }
 .product-reviews {
-  color: var(--primary);
-  float: left;
+  color: var(--secondary);
 }
 .product-rating {
-  color: var(--primary);
-  float: right;
+  color: var(--yellow);
 }
 </style>

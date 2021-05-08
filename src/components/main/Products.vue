@@ -1,5 +1,5 @@
 <template>
-  <section id="our-products" data-aos="flip-right">
+  <section v-if="products.length" id="our-products" data-aos="flip-right">
     <p class="headline">
       Latest Products
       <span>
@@ -17,14 +17,20 @@
       />
     </div>
   </section>
+  <Loading v-else-if="!error" />
+  <Error v-if="error" :error="error" />
 </template>
 <script>
-import Axios from 'axios';
-import Product from './Product';
+import Axios from "axios";
+import Product from "./Product";
+import Loading from "../Loading";
+import Error from "../Error";
 export default {
-  name: 'Products',
+  name: "Products",
   components: {
     Product,
+    Loading,
+    Error,
   },
   props: {
     isLight: Boolean,
@@ -32,6 +38,7 @@ export default {
   data() {
     return {
       products: [],
+      error: null,
     };
   },
   created() {
@@ -40,9 +47,16 @@ export default {
   methods: {
     async fetchData() {
       const url =
-        'https://raw.githubusercontent.com/LahoucineABOULHASSAN/json_files/main/products.json';
-      const res = await Axios.get(url);
-      this.products = res.data;
+        "https://raw.githubusercontent.com/LahoucineABOULHASSAN/json_files/main/products.json";
+      try {
+        const res = await Axios.get(url);
+        if (res.status !== 200) {
+          throw Error("Couldn't get res");
+        }
+        this.products = res.data;
+      } catch (err) {
+        this.error = err.message;
+      }
     },
   },
 };
