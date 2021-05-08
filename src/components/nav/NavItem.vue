@@ -18,7 +18,6 @@
     methods: {
       isActive: function(event) {
         const navLinks = document.querySelectorAll('.nav-item')
-        console.log(navLinks)
         navLinks.forEach((elem) => {
           if (elem === event.target) {
             event.target.classList.add('active')

@@ -9,20 +9,19 @@
   </div>
 </template>
 <script>
-export default {
-  name: 'Rating',
-  props: {
-    rating: Number,
-  },
-  methods: {
-    handleRate: function(i) {
-      if (i <= this.rating) {
-        return 'fitted';
-      } else {
-        return 'outline fitted';
-      }
+  export default {
+    name: 'Rating',
+    props: {
+      rating: Number,
     },
-  },
-};
+    methods: {
+      handleRate: function(i) {
+        if (i <= this.rating) {
+          return 'fitted'
+        } else {
+          return 'outline fitted'
+        }
+      },
+    },
+  }
 </script>
-<style scoped></style>
